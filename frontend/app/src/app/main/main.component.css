@@ -1,0 +1,54 @@
+/* Container */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Title */
+.text-center {
+  text-align: center;
+}
+
+h3 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+}
+
+/* User Cards */
+.user {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  padding: 1.5rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.user:hover {
+  transform: translateY(-5px);
+}
+
+.user div {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Responsiveness */
+@media screen and (max-width: 576px) {
+  .user {
+    flex-basis: calc(50% - 1rem);
+    margin: 0.5rem;
+  }
+}
+
+@media screen and (min-width: 576px) {
+  .user {
+    flex-basis: calc(33.33% - 1rem);
+    margin: 0.5rem;
+  }
+}
