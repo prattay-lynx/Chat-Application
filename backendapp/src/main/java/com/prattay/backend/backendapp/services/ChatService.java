@@ -22,7 +22,10 @@ public interface ChatService {
 
     Chat addMessage1(Message add, Long chatId) throws ChatNotFoundException;
 
-    Message addMessage(Message message);
-
     List<Message> getAllMessagesInChat(Long chatId) throws NoChatExistInTheRepo;
+
+    HashSet<Chat> getChatByFirstUserNameOrSecondUserName(String username) throws ChatNotFoundException;
+
+    HashSet<Chat> getChatByFirstUserNameAndSecondUserName(String firstUserName, String secondUserName)
+            throws ChatNotFoundException;
 }

@@ -65,7 +65,7 @@ export class UserComponent implements OnInit {
   adduser() {
     if (this.registerForm.valid) {
       this.userObj.userName = this.registerForm.value.username;
-      this.userService.adduser(this.userObj).subscribe(
+      this.userService.addUser(this.userObj).subscribe(
         (data: any) => {
           console.log(data);
 

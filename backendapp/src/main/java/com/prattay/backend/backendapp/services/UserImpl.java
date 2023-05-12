@@ -6,8 +6,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-// import org.springframework.beans.factory.annotation.Autowired;
-
 import com.prattay.backend.backendapp.domain.User;
 import com.prattay.backend.backendapp.exceptions.UserAlreadyExistException;
 import com.prattay.backend.backendapp.exceptions.UserNotFoundException;
@@ -20,7 +18,7 @@ public class UserImpl implements UserService {
     private UserRepository userRepository;
 
     @Override
-    public List<User> getall() throws UserNotFoundException {
+    public List<User> getAll() throws UserNotFoundException {
         List<User> users = userRepository.findAll();
         if (users.isEmpty()) {
             throw new UserNotFoundException();

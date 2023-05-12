@@ -7,7 +7,7 @@ import com.prattay.backend.backendapp.exceptions.UserAlreadyExistException;
 import com.prattay.backend.backendapp.exceptions.UserNotFoundException;
 
 public interface UserService {
-    List<User> getall() throws UserNotFoundException;
+    List<User> getAll() throws UserNotFoundException;
 
     User addUser(User user) throws UserAlreadyExistException;
 

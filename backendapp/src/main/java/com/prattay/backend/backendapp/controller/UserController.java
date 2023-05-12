@@ -28,9 +28,9 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("/getall")
-    public ResponseEntity<List<User>> getall() throws IOException {
+    public ResponseEntity<List<User>> getAll() throws IOException {
         try {
-            return new ResponseEntity<List<User>>(userService.getall(), HttpStatus.OK);
+            return new ResponseEntity<List<User>>(userService.getAll(), HttpStatus.OK);
         } catch (UserNotFoundException e) {
             return new ResponseEntity("User not Found", HttpStatus.NOT_FOUND);
         }
