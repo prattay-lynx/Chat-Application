@@ -18,8 +18,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 public class Chat {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long chatId;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private int chatId;
 
     @Column
     private String firstUserName;
@@ -31,7 +31,7 @@ public class Chat {
     @JsonIgnore
     private List<Message> messageList;
 
-    public Chat(Long chatId, String firstUserName, String secondUserName, List<Message> messageList) {
+    public Chat(int chatId, String firstUserName, String secondUserName, List<Message> messageList) {
         this.chatId = chatId;
         this.firstUserName = firstUserName;
         this.secondUserName = secondUserName;
@@ -41,11 +41,11 @@ public class Chat {
     public Chat() {
     }
 
-    public Long getChatId() {
+    public int getChatId() {
         return chatId;
     }
 
-    public void setChatId(Long chatId) {
+    public void setChatId(int chatId) {
         this.chatId = chatId;
     }
 

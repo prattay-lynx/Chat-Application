@@ -14,15 +14,17 @@ public interface ChatService {
 
     List<Chat> findAllChats() throws NoChatExistInTheRepo;
 
-    Chat getById(Long id) throws ChatNotFoundException;
+    Chat getById(int id) throws ChatNotFoundException;
 
     HashSet<Chat> getChatByFirstUserName(String username) throws ChatNotFoundException;
 
     HashSet<Chat> getChatBySecondUserName(String username) throws ChatNotFoundException;
 
-    Chat addMessage1(Message add, Long chatId) throws ChatNotFoundException;
+    Chat addMessage1(Message add, int chatId) throws ChatNotFoundException;
 
-    List<Message> getAllMessagesInChat(Long chatId) throws NoChatExistInTheRepo;
+    Message addMessage2(Message message);
+
+    List<Message> getAllMessagesInChat(int chatId) throws NoChatExistInTheRepo;
 
     HashSet<Chat> getChatByFirstUserNameOrSecondUserName(String username) throws ChatNotFoundException;
 

@@ -15,7 +15,7 @@ import com.prattay.backend.backendapp.domain.Message;
 import com.prattay.backend.backendapp.exceptions.ChatNotFoundException;
 import com.prattay.backend.backendapp.exceptions.NoChatExistInTheRepo;
 import com.prattay.backend.backendapp.repositories.ChatRepository;
-// import com.prattay.backend.backendapp.repositories.MessageRepository;
+import com.prattay.backend.backendapp.repositories.MessageRepository;
 
 @Service
 public class ChatImpl implements ChatService {
@@ -23,12 +23,20 @@ public class ChatImpl implements ChatService {
     @Autowired
     private ChatRepository chatRepository;
 
+    @Autowired
+    private MessageRepository messageRepository;
+
     public Chat addChat(Chat chat) {
         return chatRepository.save(chat);
     }
 
     @Override
-    public List<Message> getAllMessagesInChat(Long chatId) throws NoChatExistInTheRepo {
+    public Message addMessage2(Message message) {
+        return messageRepository.save(message);
+    }
+
+    @Override
+    public List<Message> getAllMessagesInChat(int chatId) throws NoChatExistInTheRepo {
         Optional<Chat> chat = chatRepository.findById(chatId);
 
         if (chat.isEmpty()) {
@@ -49,7 +57,7 @@ public class ChatImpl implements ChatService {
     }
 
     @Override
-    public Chat getById(Long id) throws ChatNotFoundException {
+    public Chat getById(int id) throws ChatNotFoundException {
         Optional<Chat> chatid = chatRepository.findById(id);
         if (chatid.isPresent()) {
             return chatid.get();
@@ -80,20 +88,20 @@ public class ChatImpl implements ChatService {
     }
 
     @Override
-    public Chat addMessage1(Message add, Long chatId) throws ChatNotFoundException {
+    public Chat addMessage1(Message add, int chatId) throws ChatNotFoundException {
         Optional<Chat> chat = chatRepository.findById(chatId);
-        Chat chat1 = chat.get();
+        Chat abc = chat.get();
 
-        if (chat1.getMessageList() == null) {
+        if (abc.getMessageList() == null) {
             List<Message> msg = new ArrayList<>();
             msg.add(add);
-            chat1.setMessageList(msg);
-            return chatRepository.save(chat1);
+            abc.setMessageList(msg);
+            return chatRepository.save(abc);
         } else {
-            List<Message> rates = chat1.getMessageList();
+            List<Message> rates = abc.getMessageList();
             rates.add(add);
-            chat1.setMessageList(rates);
-            return chatRepository.save(chat1);
+            abc.setMessageList(rates);
+            return chatRepository.save(abc);
         }
     }
 

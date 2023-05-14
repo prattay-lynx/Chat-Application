@@ -2,7 +2,7 @@ package com.prattay.backend.backendapp.domain;
 
 import java.util.Date;
 
-import javax.persistence.Column;
+// import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -16,26 +16,23 @@ import javax.persistence.ManyToOne;
 public class Message {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private int id;
 
-    @Column
     private String senderEmail;
 
-    @Column
     private Date time = new Date(System.currentTimeMillis());
 
-    @Column
     private String replymessage;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "CHAT_ID")
+    @JoinColumn(name = "chat_id")
     private Chat chat;
 
     public Message() {
     }
 
-    public Message(Long id, String senderEmail, Date time, String replymessage, Chat chat) {
+    public Message(int id, String senderEmail, Date time, String replymessage, Chat chat) {
         this.id = id;
         this.senderEmail = senderEmail;
         this.time = time;
@@ -43,11 +40,11 @@ public class Message {
         this.chat = chat;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

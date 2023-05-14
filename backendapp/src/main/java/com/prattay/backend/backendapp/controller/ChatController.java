@@ -33,8 +33,6 @@ public class ChatController {
 
     @Autowired
     private ChatService chatService;
-    // @Autowired
-    // private SequenceGeneratorService sequenceGeneratorService;
 
     @PostMapping("/add")
     public ResponseEntity<Chat> createChat(@RequestBody Chat chat) throws IOException {
@@ -44,6 +42,11 @@ public class ChatController {
         } catch (AlreadyChatExistException e) {
             return new ResponseEntity("Chat Already Exist", HttpStatus.CONFLICT);
         }
+    }
+
+    @PostMapping("/add/message1")
+    public ResponseEntity<Message> addMessage2(@RequestBody Message message) throws IOException {
+        return new ResponseEntity<Message>(chatService.addMessage2(message), HttpStatus.CREATED);
     }
 
     @GetMapping("/all")
@@ -56,7 +59,7 @@ public class ChatController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Chat> getChatById(@PathVariable Long id) {
+    public ResponseEntity<Chat> getChatById(@PathVariable int id) {
         try {
             return new ResponseEntity<Chat>(chatService.getById(id), HttpStatus.OK);
         } catch (ChatNotFoundException e) {
@@ -111,7 +114,7 @@ public class ChatController {
     }
 
     @PutMapping("/message/{chatId}")
-    public ResponseEntity<Chat> addMessage1(@RequestBody Message add, @PathVariable Long chatId)
+    public ResponseEntity<Chat> addMessage1(@RequestBody Message add, @PathVariable int chatId)
             throws ChatNotFoundException {
         return new ResponseEntity<Chat>(chatService.addMessage1(add, chatId), org.springframework.http.HttpStatus.OK);
     }

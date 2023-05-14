@@ -17,8 +17,8 @@ h3 {
 
 /* User Cards */
 .user {
-  background-color: #fff;
-  border-radius: 10px;
+  background-color: #e5d2d2;
+  border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
   cursor: pointer;
   padding: 1.5rem;
@@ -31,7 +31,7 @@ h3 {
 
 .user div {
   font-size: 1.5rem;
-  font-weight: 700;
+  font-weight: 500;
   text-align: center;
   white-space: nowrap;
   overflow: hidden;
